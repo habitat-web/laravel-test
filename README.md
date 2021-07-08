@@ -35,7 +35,7 @@ La prueba consiste en culminar diversas características de un sistema de compra
 - [ ] __POST api/products/:id/buy__ (Realizar la compra de un producto)
     - Decremetar el número de stock al realizar una venta
     - Crear restricción que no permita crear una transacción si la cantidad productos a comprar supera el número de productos en stock
-- [ ] __GET /sellers/:id/products__ (Mostrar Listado de productos de un determinado vendedor)
+- [ ] __GET api/sellers/:id/products__ (Mostrar Listado de productos de un determinado vendedor)
     - Deberá ser restringido, solo será accesible por usuarios registrados
 
 ## Consideraciones Generales
