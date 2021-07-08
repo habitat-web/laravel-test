@@ -23,21 +23,21 @@ La prueba consiste en culminar diversas características de un sistema de compra
 ## Por hacer
 
 ### Endpoints
-- [ ] GET   api/profile                Datos del usuario en sesión
+- [ ] __GET api/profile__ (Datos del usuario en sesión)
     - Incluir número (contadores) de compras, productos disponibles y ventas
-- [ ] GET   api/profile/products       Listado de productos del usuario en sesión
-- [ ] POST  api/profile/products       Creación de un producto para el usuario en sesión
-- [ ] GET   api/profile/purchases      Listado de compras (transacciones) del usuario en sesión
-- [ ] GET   api/profile/sales          Listado de ventas realizadas por el usuario en sesión
-- [ ] GET   api/products               Listado de todos los productos en stock
+- [ ] __GET api/profile/products__ (Listado de productos del usuario en sesión)
+- [ ] __POST api/profile/products__ (Creación de un producto para el usuario en sesión)
+- [ ] __GET api/profile/purchases__ (Listado de compras (transacciones) del usuario en sesión)
+- [ ] __GET api/profile/sales__ (Listado de ventas realizadas por el usuario en sesión)
+- [ ] __GET api/products__ (Listado de todos los productos en stock)
     - Permitir busqueda de productos por al menos un criterio
     - Utilzar parámetro `show_products_without_stock` para indicar si se incluyen los productos sin stock
-- [ ] POST  /products/:id/buy        Realizar la compra de un producto
+- [ ] __POST api/products/:id/buy__ (Realizar la compra de un producto)
     - Decremetar el número de stock al realizar una venta
     - Crear restricción que no permita crear una transacción si la cantidad productos a comprar supera el número de productos en stock
-- [ ] GET   /sellers/:id/products   Mostrar Listado de productos de un determinado vendedor
+- [ ] __GET /sellers/:id/products__ (Mostrar Listado de productos de un determinado vendedor)
     - Deberá ser restringido, solo será accesible por usuarios registrados
 
-### Consideraciones Generales
+## Consideraciones Generales
 - Los productos deberán tener una propiedad computada `status` que contendrá el valor "In Stock" o "Sold Out" dependiendo del número en su propiedad `quantity`
 
