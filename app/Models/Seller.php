@@ -19,12 +19,4 @@ class Seller extends User
             return $query->has('products');
         });
     }
-
-    /**
-     * Products that user sells
-     */
-    public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
 }
