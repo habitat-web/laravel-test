@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +21,10 @@ Route::group(['prefix' => 'auth'], function () {
 
     Route::get('logout', [AuthController::class, 'logout'])
         ->middleware('auth:api');
+});
+
+Route::group(['prefix' => 'profile', 'middleware' => 'auth:api'], function () {
+    Route::get('', [ProfileController::class, 'showProfile']);
+    Route::get('products', [ProfileController::class, 'showProducts']);
+    Route::post('products', [ProfileController::class, 'storeProducts']);
 });

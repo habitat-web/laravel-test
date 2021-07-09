@@ -31,6 +31,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'email_verified_at',
+        'created_at',
+        'transactions',
     ];
 
     /**
@@ -43,7 +46,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Transactions of the user
+     * Transactions of the user (purchases)
      */
     public function transactions()
     {
