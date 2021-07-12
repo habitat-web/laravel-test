@@ -21,7 +21,7 @@ La prueba consiste en culminar diversas características de un sistema de compra
 ![Modelos y relaciones](https://i.ibb.co/VBnpmCq/Captura-de-pantalla-de-2021-07-08-03-38-18.png "Modelos y relaciones")
 
 
-### Enpoints implementados
+### Endpoints implementados
 
 - __POST api/auth/login__ *Autenticación del usuario*
     - Recibe *email*, *passowrd* y opcionalmente *remember_me*
@@ -29,20 +29,20 @@ La prueba consiste en culminar diversas características de un sistema de compra
 - __GET api/auth/logout__ *Elimina el token de autorización*
     - Regresa un mensaje de confirmación en caso exitoso
 - __GET api/products__ *Listado de productos de los poductos registrados con stock*
-    - Este enpoint no tiene restricciones de acceso.
+    - Este endpoint no tiene restricciones de acceso.
     - Solo se listará aquellos productos con un valor mayor a 0 en su propiedad *quantity*.
-    - Opcionalmente puede recibir el parametro *name* para realizar el filtrado de los productos. Este valo puede ser algún fragmento del nombre.
+    - Opcionalmente puede recibir el parámetro *name* para realizar el filtrado de los productos. Este valo puede ser algún fragmento del nombre.
 - __POST api/products__ *Creación de un producto por el usuario en sesión*
     - Recibe *name*, *description* y *quantity*
-    - el valor para *id_user* será determinado por el usuario en sesión
+    - El valor para *user_id* será determinado por el usuario en sesión. De esta manera se vinculará el producto con el usuario que lo registró y se contabilizará como "producto ofrecido".
     - Regresa un mensaje de confirmación en caso exitoso
 
 
 ## Por hacer
 
 ### Pruebas y correcciones
-- Validar que el los enpoints ya existentes funcionen tal cual se desriben.
-- Se debe corregir un bug en el enpoint **GET api/products**
+- Validar que el los endpoints ya existentes funcionen tal cual se describen.
+- Se debe corregir un bug en el endpoint **GET api/products**
 
 ### Endpoints
 - [ ] __GET api/profile__ *Datos del usuario en sesión*
@@ -70,4 +70,6 @@ Para el correcto funcionamiento de Passport es necesario inicializar la configur
 
 ### Uso del API
 El API deberá ser probada utilizando Postman, por lo que no es necesario el desarrollo de una interfaz para esta prueba.
+
+Al finalizar la prueba deberás adjuntar a este repo la coleccíon de Postman con todos los endpoints mencionados en este readme.
 
