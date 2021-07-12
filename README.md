@@ -25,19 +25,24 @@ La prueba consiste en culminar diversas características de un sistema de compra
 
 - __POST api/auth/login__ *Autenticación del usuario*
     - Recibe *email*, *passowrd* y opcionalmente *remember_me*
-    - Regresa un token de autorización
+    - Regresa *access_token* el cual se utilizará como token de autorización.
 - __GET api/auth/logout__ *Elimina el token de autorización*
     - Regresa un mensaje de confirmación en caso exitoso
-- __GET api/profile/products__ *Listado de productos del usuario en sesión*
-- __POST api/profile/products__ *Creación de un producto para el usuario en sesión*
+- __GET api/products__ *Listado de productos de los poductos registrados con stock*
+    - Este enpoint no tiene restricciones de acceso.
+    - Solo se listará aquellos productos con un valor mayor a 0 en su propiedad *quantity*.
+    - Opcionalmente puede recibir el parametro *name* para realizar el filtrado de los productos. Este valo puede ser algún fragmento del nombre.
+- __POST api/products__ *Creación de un producto por el usuario en sesión*
     - Recibe *name*, *description* y *quantity*
+    - el valor para *id_user* será determinado por el usuario en sesión
     - Regresa un mensaje de confirmación en caso exitoso
 
 
 ## Por hacer
 
-### Pruebas
-Validar que el los enpoints ya existentes funcionen tal cual se desriben, y en caso contrario, hacer las correcciones neceserias.
+### Pruebas y correcciones
+- Validar que el los enpoints ya existentes funcionen tal cual se desriben.
+- Se debe corregir un bug en el enpoint **GET api/products**
 
 ### Endpoints
 - [ ] __GET api/profile__ *Datos del usuario en sesión*
@@ -52,8 +57,16 @@ Validar que el los enpoints ya existentes funcionen tal cual se desriben, y en c
 ## Consideraciones Generales
 
 ### Autenticación
+El seeder genera 4 usuarios, la contraseña por defecto es *password* para cualquiera de ellos.
+
 Para la autenticación de los usuarios se utiliza Passport, mediante el uso de *Bearer token*.
 Este token debe incluirse en el Header de cada petición para autorizar el acceso al API.
+
+El valor del header *Authorization* determinará el usuario en en sesión. Este valor se conforma de la siguente forma:
+> Authorization: *Bearer {{token_del_usuario}}*
+
+Para el correcto funcionamiento de Passport es necesario inicializar la configuración con el siguente comando:
+> php artisan passport:install
 
 ### Uso del API
 El API deberá ser probada utilizando Postman, por lo que no es necesario el desarrollo de una interfaz para esta prueba.

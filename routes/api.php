@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,8 +23,11 @@ Route::group(['prefix' => 'auth'], function () {
         ->middleware('auth:api');
 });
 
-Route::group(['prefix' => 'profile', 'middleware' => 'auth:api'], function () {
-    Route::get('', [ProfileController::class, 'showProfile']);
-    Route::get('products', [ProfileController::class, 'showProducts']);
-    Route::post('products', [ProfileController::class, 'storeProducts']);
+// Products
+
+// Index products
+Route::get('products', [ProductController::class, 'index']);
+
+Route::group(['prefix' => 'products', 'middleware' => 'auth:api'], function () {
+    Route::post('', [ProductController::class, 'store']);
 });

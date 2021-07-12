@@ -7,19 +7,22 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 
-class ProfileController extends Controller
+class ProductController extends Controller
 {
     /**
-     * User products
+     * Index of products
      * 
-     * Return list of products offered by the user
+     * Return list of products in stock
      * 
      */
 
-    public function showProducts(Request $request)
+    public function index(Request $request)
     {
-        $user = $request->user();   
-        return $this->showOne($user->products());
+        return $this->showOne(
+            Product::inStock()
+            ->name($request->name)
+            ->get()
+        );
     }
 
     /**
@@ -27,7 +30,7 @@ class ProfileController extends Controller
      * 
      * Store a single product
      */
-    public function storeProducts(ProductRequest $request)
+    public function store(ProductRequest $request)
     {
         $user_id = $request->user()->id;
         $product = new Product($request->all());
